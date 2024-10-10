@@ -5,7 +5,8 @@ import { useAuth } from "./form/Authprovider";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { isLoggedIn, logout, user } = useAuth();
+  const { user, login, logout } = useAuth();
+
 
   const handleLogout = () => {
     logout();
@@ -32,17 +33,18 @@ export default function Navbar() {
                 </>} */}
                 {user && user.role === "admin" && (
                   <>
-                    <Link
-                      to="/adminDashboard"
-                      className="ml-4 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-black"
-                    >
-                      Admin Dashboard
-                    </Link>
+                   
                     <Link
                       to="/courseForm"
                       className="ml-4 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-black"
                     >
                       Courses Form
+                    </Link>
+                    <Link
+                      to="/adminDashboard"
+                      className="ml-4 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-black"
+                    >
+                      Admin Dashboard
                     </Link>
                     <Link
                       to="/studentDashboard"
@@ -58,7 +60,7 @@ export default function Navbar() {
                     </Link>
                   </>
                 )}
-                {!isLoggedIn ? (
+                {!login ? (
                   <Link
                     to="/login"
                     className="ml-4 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-black"
